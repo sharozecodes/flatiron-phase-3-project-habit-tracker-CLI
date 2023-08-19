@@ -23,9 +23,10 @@ def handle_user_input(user_input):
     if(user_input == 1):
         sign_in()
     elif(user_input == 2):
-        print("option 2")
+        sign_up()
     elif(user_input == 3):
         clear_screen()
+        print("\n\nGood bye!")
     
 
 def clear_screen():
@@ -34,6 +35,11 @@ def clear_screen():
 def sign_in():
     clear_screen()
     username = input("Please enter username: ")
+    print(f"\n\nHello, {username}!")
+
+def sign_up():
+    clear_screen()
+    username = input("Please create a username: ")
     print(f"\n\nHello, {username}!")
 
 start()
