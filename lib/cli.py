@@ -23,3 +23,9 @@ def handle_user_input(user_input):
         clear_screen()
         start()
     
+
+def clear_screen():
+    os.system("clear")
+    
+
+start()
