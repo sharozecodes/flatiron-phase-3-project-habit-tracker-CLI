@@ -10,3 +10,16 @@ def start():
     handle_user_input(user_input)
 
 
+def handle_user_input(user_input):
+    if(user_input == "1"):
+        print("Option 1")
+    elif(user_input == "2"):
+        print("option 2")
+    elif(user_input == "3"):
+        clear_screen()
+        start()
+    else:
+        print("Invalid selection.")
+        clear_screen()
+        start()
+    
