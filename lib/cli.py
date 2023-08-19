@@ -21,7 +21,7 @@ def start():
 
 def handle_user_input(user_input):
     if(user_input == 1):
-        print("Option 1")
+        sign_in()
     elif(user_input == 2):
         print("option 2")
     elif(user_input == 3):
@@ -33,5 +33,7 @@ def clear_screen():
     
 def sign_in():
     clear_screen()
+    username = input("Please enter username: ")
+    print(f"\n\nHello, {username}!")
 
 start()
