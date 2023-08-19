@@ -2,9 +2,7 @@ import os
 from prettycli import red
 from simple_term_menu import TerminalMenu
 
-
-def start():
-    # print("\n\n\nWelcome to HABIT TRACKER\n".center(700))
+def logo():
     print("""
          _   _    _    ____ ___ _____   _____ ____      _    ____ _  _______ ____
         | | | |  / \  | __ )_ _|_   _| |_   _|  _ \    / \  / ___| |/ / ____|  _ \\
@@ -13,6 +11,8 @@ def start():
         |_| |_/_/   \_\____/___| |_|     |_| |_| \_\/_/   \_\____|_|\_\_____|_| \_\\
         """)
 
+def start():
+    logo()
     options = ["Sign In", "Sign Up", "Exit"]
     terminal_menu = TerminalMenu(options)
     menu_index = terminal_menu.show()
@@ -26,20 +26,23 @@ def handle_user_input(user_input):
         sign_up()
     elif(user_input == 3):
         clear_screen()
-        print("\n\nGood bye!")
+        print("\n\nGood bye!\n\n")
     
 
 def clear_screen():
     os.system("clear")
-    
+    logo()
+
 def sign_in():
     clear_screen()
-    username = input("Please enter username: ")
-    print(f"\n\nHello, {username}!")
+    username = input("\n\nPlease enter username: ")
+    clear_screen()
+    print(f"\nHello, {username}!\n\n")
 
 def sign_up():
     clear_screen()
-    username = input("Please create a username: ")
-    print(f"\n\nHello, {username}!")
+    username = input("\n\nPlease create a username: ")
+    clear_screen()
+    print(f"\nHello, {username}!\n\n")
 
 start()
