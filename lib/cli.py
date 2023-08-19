@@ -1,4 +1,5 @@
 import os
+from prettycli import red
 
 def start():
     print("Welcome to HABIT TRACKER\n")
@@ -19,8 +20,8 @@ def handle_user_input(user_input):
         clear_screen()
         start()
     else:
-        print("Invalid selection.")
-        clear_screen()
+        print(red("Invalid selection.\n"))
+        # clear_screen()
         start()
     
 
