@@ -19,3 +19,4 @@ if __name__ == '__main__':
 
     session.bulk_save_objects(users)
     session.commit()
+    session.close()
