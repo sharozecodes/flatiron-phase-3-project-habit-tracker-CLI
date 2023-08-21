@@ -1,6 +1,7 @@
 import os
 from prettycli import red
 from simple_term_menu import TerminalMenu
+from queries import new_user
 
 def logo():
     print("""
@@ -41,8 +42,15 @@ def sign_in():
 
 def sign_up():
     clear_screen()
-    username = input("\n\nPlease create a username: ")
+    username = input("\n\nPlease enter a username: ")
+    name = input("\n\nPlease enter name: ")
+    new_user(username, name)
+    
     clear_screen()
     print(f"\nHello, {username}!\n\n")
 
-start()
+def main():
+    start()
+
+if __name__ == '__main__':
+    main()

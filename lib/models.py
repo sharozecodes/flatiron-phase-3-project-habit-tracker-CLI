@@ -8,5 +8,7 @@ class User(Base):
 
     id = Column(Integer, primary_key=True)
     username = Column(String)
+    name = Column(String)
     
+
 
