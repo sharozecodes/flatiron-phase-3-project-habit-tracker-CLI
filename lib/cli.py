@@ -37,11 +37,15 @@ def clear_screen():
 def sign_in():
     logo()
     username = input("\n\nPlease enter username: ")
-    user_id = find_by_username(username).id
+    user = find_by_username(username)
+    if user:
+        habit_menu(user.id)
+    else:
+        print("\nUsername not found.\n")
     # print(f"\n{find_by_username(username)}")
     # clear_screen()
     # print(f"\nHello, {username}!\n\n")
-    habit_menu(user_id)
+    
 
 def sign_up():
     logo()
