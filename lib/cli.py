@@ -58,14 +58,17 @@ def habit_menu(user_id):
     terminal_menu = TerminalMenu(options)
     menu_index = terminal_menu.show()
     if(menu_index == 0):
-        print("add habit")
+        logo()
+        title = input("\n\nPlease enter the habit title: ")
+        frequency = input("\n\nPlease enter the reminding frequency: ")
+        add_habit(title=title, frequency=frequency, user_id=user_id)
+        clear_screen()
     elif(menu_index == 1):
         print("retrive")
     elif(menu_index == 3):
         print("view all")
     else:
         print("Go back")
-
 
 
 
