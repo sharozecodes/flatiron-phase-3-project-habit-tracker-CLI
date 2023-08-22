@@ -67,12 +67,15 @@ def habit_menu(user_id):
         logo()
         title = input("\n\nPlease enter the habit title: ")
         matching_habits = find_by_habit(title, user_id=user_id)
-        habit_options = []
-        for habit in matching_habits:
-            habit_options.append(habit.title)
-        terminal_menu = TerminalMenu(habit_options)
-        habit_index = terminal_menu.show()
-        print(matching_habits[habit_index])
+        if matching_habits:
+            habit_options = []
+            for habit in matching_habits:
+                habit_options.append(habit.title)
+            terminal_menu = TerminalMenu(habit_options)
+            habit_index = terminal_menu.show()
+            print(matching_habits[habit_index])
+        else:
+            print("\nNo records found!\n")
     elif(menu_index == 3):
         print("view all")
     else:
