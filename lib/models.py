@@ -15,3 +15,16 @@ class User(Base):
             f'username={self.username}, ' + \
             f'name={self.name})'
 
+class Habit(Base):
+    __tablename__ = 'habits'
+
+    id = Column(Integer, primary_key=True)
+    title = Column(String)
+    frequency = Column(Integer)
+    streak = Column(Integer)
+
+    def __repr__(self):
+        return f'Habit(id={self.id}, ' + \
+            f'title={self.title}, ' + \
+            f'frequency={self.frequency}, ' + \
+            f'streak={self.streak})'

@@ -1,7 +1,7 @@
 import os
 from prettycli import red
 from simple_term_menu import TerminalMenu
-from queries import new_user
+from queries import *
 
 def logo():
     print("""
