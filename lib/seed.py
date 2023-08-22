@@ -11,13 +11,7 @@ if __name__ == '__main__':
 
     session.query(User).delete()
     session.query(Habit).delete()
-    
-    # users = [
-    #     User(username='archer', name='Sharoze'),
-    #     User(username='pablo', name='Joe'),
-    #     User(username='pabla', name='bravo')
-    # ]
-    
+
     user_list = [{'username': 'archer', 'name': 'sharoze'},
                  {'username': 'john', 'name': 'pal'},
                  {'username': 'joe', 'name': 'mahma'},
@@ -25,18 +19,10 @@ if __name__ == '__main__':
     users = []
     for user_data in user_list:
         user = User(username=user_data['username'], name=user_data['name'])
-
-        # add and commit individually to get IDs back
         session.add(user)
         session.commit()
 
         users.append(user)
-
-
-
-
-    # session.bulk_save_objects(users)
-    # session.commit()
 
     print(users[0])
     habits = [
