@@ -1,8 +1,8 @@
-"""creates habit model
+"""added foreign key to habits
 
-Revision ID: 63a3bd0aafd5
-Revises: 168875a91992
-Create Date: 2023-08-21 22:30:08.017358
+Revision ID: 9b13616ca682
+Revises: a7cebe4f3a4d
+Create Date: 2023-08-22 11:51:57.544657
 
 """
 from typing import Sequence, Union
@@ -12,8 +12,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '63a3bd0aafd5'
-down_revision: Union[str, None] = '168875a91992'
+revision: str = '9b13616ca682'
+down_revision: Union[str, None] = 'a7cebe4f3a4d'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
@@ -25,6 +25,8 @@ def upgrade() -> None:
     sa.Column('title', sa.String(), nullable=True),
     sa.Column('frequency', sa.Integer(), nullable=True),
     sa.Column('streak', sa.Integer(), nullable=True),
+    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###

@@ -4,6 +4,7 @@ from simple_term_menu import TerminalMenu
 from queries import *
 
 def logo():
+    clear_screen()
     print("""
          _   _    _    ____ ___ _____   _____ ____      _    ____ _  _______ ____
         | | | |  / \  | __ )_ _|_   _| |_   _|  _ \    / \  / ___| |/ / ____|  _ \\
@@ -32,22 +33,40 @@ def handle_user_input(user_input):
 
 def clear_screen():
     os.system("clear")
-    logo()
 
 def sign_in():
-    clear_screen()
+    logo()
     username = input("\n\nPlease enter username: ")
-    # print(f"\n{find_by_name(username)}")
-    clear_screen()
-    print(f"\nHello, {username}!\n\n")
+    user_id = find_by_username(username).id
+    # print(f"\n{find_by_username(username)}")
+    # clear_screen()
+    # print(f"\nHello, {username}!\n\n")
+    habit_menu(user_id)
 
 def sign_up():
-    clear_screen()
+    logo()
     username = input("\n\nPlease enter a username: ")
     name = input("\n\nPlease enter name: ")
     new_user(username, name)
     clear_screen()
     print(f"\nHello, {username}!\n\n")
+
+def habit_menu(user_id):
+    logo()
+    print(f"User id:", user_id)
+    options = ["Add a habit", "Retrieve a habit", "View all habits", "Go back"]
+    terminal_menu = TerminalMenu(options)
+    menu_index = terminal_menu.show()
+    if(menu_index == 0):
+        print("add habit")
+    elif(menu_index == 1):
+        print("retrive")
+    elif(menu_index == 3):
+        print("view all")
+    else:
+        print("Go back")
+
+
 
 
 def main():

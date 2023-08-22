@@ -12,9 +12,9 @@ def new_user(username, name):
     session.commit()
     print("User added successfully!")
 
-def find_by_name(name):
+def find_by_username(username):
     engine = create_engine("sqlite:///db/habittracker.db")
     Session = sessionmaker(bind=engine)
     session = Session()
-    return session.query(User).filter_by(name=name).first()
+    return session.query(User).filter_by(username=username).first()
 
