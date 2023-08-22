@@ -54,7 +54,7 @@ def sign_up():
 def habit_menu(user_id):
     logo()
     print(f"User id:", user_id)
-    options = ["Add a habit", "Retrieve a habit", "View all habits", "Go back"]
+    options = ["Add a habit", "Search a habit", "View all habits", "Go back"]
     terminal_menu = TerminalMenu(options)
     menu_index = terminal_menu.show()
     if(menu_index == 0):
@@ -64,7 +64,11 @@ def habit_menu(user_id):
         add_habit(title=title, frequency=frequency, user_id=user_id)
         clear_screen()
     elif(menu_index == 1):
-        print("retrive")
+        logo()
+        title = input("\n\nPlease enter the habit title: ")
+        matching_habits = find_by_habit(title, user_id=user_id)
+        for habit in matching_habits:
+            print(habit.title)
     elif(menu_index == 3):
         print("view all")
     else:

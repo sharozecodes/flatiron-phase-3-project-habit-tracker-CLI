@@ -28,3 +28,10 @@ def add_habit(title, frequency, user_id):
     session.commit()
     print("Habit added successfully!")
 
+def find_by_habit(text, user_id):
+    engine = create_engine("sqlite:///db/habittracker.db")
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    query = session.query(Habit).filter_by(user_id=user_id).filter(Habit.title.ilike(f"%{text}%"))
+    return query.all()
