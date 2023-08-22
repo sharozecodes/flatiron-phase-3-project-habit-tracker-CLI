@@ -45,9 +45,9 @@ def sign_up():
     username = input("\n\nPlease enter a username: ")
     name = input("\n\nPlease enter name: ")
     new_user(username, name)
-    
     clear_screen()
     print(f"\nHello, {username}!\n\n")
+
 
 def main():
     start()
