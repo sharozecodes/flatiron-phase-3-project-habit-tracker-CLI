@@ -13,9 +13,9 @@ if __name__ == '__main__':
     session.query(Habit).delete()
     
     users = [
-        User(username='pable'),
-        User(username='pablo'),
-        User(username='pabla')
+        User(username='pable', name='John'),
+        User(username='pablo', name='Joe'),
+        User(username='pabla', name='bravo')
     ]
 
     session.bulk_save_objects(users)

@@ -37,6 +37,7 @@ def clear_screen():
 def sign_in():
     clear_screen()
     username = input("\n\nPlease enter username: ")
+    # print(f"\n{find_by_name(username)}")
     clear_screen()
     print(f"\nHello, {username}!\n\n")
 
