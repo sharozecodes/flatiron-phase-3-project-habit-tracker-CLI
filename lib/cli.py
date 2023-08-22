@@ -71,7 +71,8 @@ def habit_menu(user_id):
         for habit in matching_habits:
             habit_options.append(habit.title)
         terminal_menu = TerminalMenu(habit_options)
-        menu_index = terminal_menu.show()
+        habit_index = terminal_menu.show()
+        print(matching_habits[habit_index])
     elif(menu_index == 3):
         print("view all")
     else:
