@@ -7,12 +7,15 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 def new_user(username, name):
-    
-
     new_user_instance = User(username=username, name=name)
     session.add(new_user_instance)
     session.commit()
-    print("User added successfully!")
+    return new_user_instance
+
+def check_username(username):
+    return session.query(User).filter_by(username=username).first() == None    
+    
+
 
 def find_by_username(username):
     return session.query(User).filter_by(username=username).first()

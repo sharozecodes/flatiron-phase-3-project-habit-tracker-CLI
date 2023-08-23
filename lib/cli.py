@@ -50,10 +50,19 @@ def sign_in():
 def sign_up():
     logo()
     username = input("\n\nPlease enter a username: ")
-    name = input("\n\nPlease enter name: ")
-    new_user(username, name)
-    clear_screen()
-    print(f"\nHello, {username}!\n\n")
+    if check_username(username=username):
+        name = input("\n\nPlease enter name: ")
+        user = new_user(username, name)
+        print("User added successfully!")
+        clear_screen()
+        print(f"\nHello, {username}!\n\n")
+        habit_menu(user_id=user.id)
+
+    else:
+        print("\nUsername already in use.\nPlease enter a different username.\n")
+        time.sleep(3)
+        sign_up()
+    
 
 def habit_menu(user_id):
     logo()
