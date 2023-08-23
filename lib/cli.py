@@ -1,4 +1,5 @@
 import os
+import time
 from prettycli import red
 from simple_term_menu import TerminalMenu
 from queries import *
@@ -41,10 +42,10 @@ def sign_in():
     if user:
         habit_menu(user.id)
     else:
-        print("\nUsername not found.\n")
-    # print(f"\n{find_by_username(username)}")
-    # clear_screen()
-    # print(f"\nHello, {username}!\n\n")
+        print(f"\n{red('Username not found.')}\n\nRedirecting you to the main menu...")
+        time.sleep(3)
+        start()
+
     
 
 def sign_up():
