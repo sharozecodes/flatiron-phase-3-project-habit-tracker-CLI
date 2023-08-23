@@ -118,7 +118,7 @@ def habit_sub_menu(user_id, habit_id):
     elif(menu_index == 2):
         delete_habit(habit_id=habit_id)
     elif(menu_index == 3):
-        print("reset")
+        reset_habit(habit_id=habit_id)
     else:
         habit_menu(user_id)
 

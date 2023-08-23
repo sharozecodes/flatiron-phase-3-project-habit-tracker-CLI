@@ -41,3 +41,8 @@ def delete_habit(habit_id):
     query = session.query(Habit).filter_by(id=habit_id).first()
     session.delete(query)
     session.commit()
+
+def reset_habit(habit_id):
+    query = session.query(Habit).filter_by(id=habit_id).first()
+    query.streak = 0
+    session.commit()
