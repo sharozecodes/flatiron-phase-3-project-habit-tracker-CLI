@@ -81,7 +81,7 @@ def habit_menu(user_id):
         selected_habit = make_habit_menu(view_all_habit(user_id=user_id))
         print(selected_habit)
     else:
-        print("Go back")
+        start()
 
 def error_message(record_name, menu):
     print(f"\n{red(f'{record_name} not found.')}\n\nRedirecting you to the {menu} menu...")
