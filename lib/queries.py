@@ -36,3 +36,8 @@ def edit_habit(habit_id, title, frequency):
     query.title = title
     query.frequency = frequency
     session.commit()
+
+def delete_habit(habit_id):
+    query = session.query(Habit).filter_by(id=habit_id).first()
+    session.delete(query)
+    session.commit()
