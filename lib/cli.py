@@ -19,15 +19,15 @@ def start():
     options = ["Sign In", "Sign Up", "Exit"]
     terminal_menu = TerminalMenu(options)
     menu_index = terminal_menu.show()
-    handle_user_input(menu_index+1)
+    handle_user_input(menu_index)
 
 
 def handle_user_input(user_input):
-    if(user_input == 1):
+    if(user_input == 0):
         sign_in()
-    elif(user_input == 2):
+    elif(user_input == 1):
         sign_up()
-    elif(user_input == 3):
+    elif(user_input == 2):
         clear_screen()
         print("\n\nGood bye!\n\n")
     
@@ -82,7 +82,7 @@ def habit_menu(user_id):
         matching_habits = find_by_habit(title, user_id=user_id)
         if matching_habits:
             habit = make_habit_menu(matching_habits=matching_habits)
-            print(habit)
+            habit_sub_menu(user_id, habit.id)
         else:
             error_message("Habit", "habit")
             habit_menu(user_id)
@@ -103,6 +103,23 @@ def make_habit_menu(matching_habits):
     terminal_menu = TerminalMenu(habit_options)
     habit_index = terminal_menu.show()
     return matching_habits[habit_index]
+
+def habit_sub_menu(user_id, habit_id):
+    logo()
+    options = ["Check In", "Edit habit", "Delete habi", "Reset streak", "Back"]
+    terminal_menu = TerminalMenu(options)
+    menu_index = terminal_menu.show()
+    if(menu_index == 0):
+        print(user_id)
+    elif(menu_index == 1):
+        print(habit_id)
+    elif(menu_index == 2):
+        print("delete")
+    elif(menu_index == 3):
+        print("reset")
+    else:
+        clear_screen()
+        print("\n\nGood bye!\n\n")
 
 def main():
     start()

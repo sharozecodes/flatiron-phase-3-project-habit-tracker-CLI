@@ -14,8 +14,6 @@ def new_user(username, name):
 
 def check_username(username):
     return session.query(User).filter_by(username=username).first() == None    
-    
-
 
 def find_by_username(username):
     return session.query(User).filter_by(username=username).first()
