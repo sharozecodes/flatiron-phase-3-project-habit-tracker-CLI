@@ -88,7 +88,7 @@ def habit_menu(user_id):
             habit_menu(user_id)
     elif(menu_index == 2):
         selected_habit = make_habit_menu(view_all_habit(user_id=user_id))
-        print(selected_habit)
+        habit_sub_menu(user_id, selected_habit.id)
     else:
         start()
 
@@ -106,7 +106,7 @@ def make_habit_menu(matching_habits):
 
 def habit_sub_menu(user_id, habit_id):
     logo()
-    options = ["Check In", "Edit habit", "Delete habi", "Reset streak", "Back"]
+    options = ["Check In", "Edit habit", "Delete habit", "Reset streak", "Back"]
     terminal_menu = TerminalMenu(options)
     menu_index = terminal_menu.show()
     if(menu_index == 0):
