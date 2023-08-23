@@ -42,8 +42,7 @@ def sign_in():
     if user:
         habit_menu(user.id)
     else:
-        print(f"\n{red('Username not found.')}\n\nRedirecting you to the main menu...")
-        time.sleep(3)
+        error_message("Username", "main")
         start()
 
     
@@ -80,13 +79,16 @@ def habit_menu(user_id):
             habit_index = terminal_menu.show()
             print(matching_habits[habit_index])
         else:
-            print("\nNo records found!\n")
+            error_message("Habit", "habit")
+            habit_menu(user_id)
     elif(menu_index == 3):
         print("view all")
     else:
         print("Go back")
 
-
+def error_message(record_name, menu):
+    print(f"\n{red(f'{record_name} not found.')}\n\nRedirecting you to the {menu} menu...")
+    time.sleep(3)
 
 def main():
     start()
