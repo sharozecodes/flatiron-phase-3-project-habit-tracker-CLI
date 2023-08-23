@@ -30,3 +30,9 @@ def find_by_habit(text, user_id):
 
 def view_all_habit(user_id):
     return session.query(Habit).filter_by(user_id=user_id).all()
+
+def edit_habit(habit_id, title, frequency):
+    query = session.query(Habit).filter_by(id=habit_id).first()
+    query.title = title
+    query.frequency = frequency
+    session.commit()
