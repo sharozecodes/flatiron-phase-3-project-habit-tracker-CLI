@@ -29,7 +29,7 @@ def handle_user_input(user_input):
         sign_up()
     elif(user_input == 2):
         clear_screen()
-        print("\n\nGood bye!\n\n")
+        print("\nGood bye!\n")
     
 
 def clear_screen():
@@ -37,7 +37,7 @@ def clear_screen():
 
 def sign_in():
     logo()
-    username = input("\n\nPlease enter username: ")
+    username = input("\nPlease enter username: ")
     user = find_by_username(username)
     if user:
         habit_menu(user.id)
@@ -49,13 +49,13 @@ def sign_in():
 
 def sign_up():
     logo()
-    username = input("\n\nPlease enter a username: ")
+    username = input("\nPlease enter a username: ")
     if check_username(username=username):
-        name = input("\n\nPlease enter name: ")
+        name = input("\nPlease enter name: ")
         user = new_user(username, name)
         print("User added successfully!")
         clear_screen()
-        print(f"\nHello, {username}!\n\n")
+        print(f"\nHello, {username}!\n")
         habit_menu(user_id=user.id)
 
     else:
@@ -72,13 +72,15 @@ def habit_menu(user_id):
     menu_index = terminal_menu.show()
     if(menu_index == 0):
         logo()
-        title = input("\n\nPlease enter the habit title: ")
-        frequency = input("\n\nPlease enter the reminding frequency: ")
+        title = input("\nPlease enter the habit title: ")
+        frequency = input("\nPlease enter the reminding frequency: ")
         add_habit(title=title, frequency=frequency, user_id=user_id)
         clear_screen()
+        logo()
+        print("\nHabit added successfully!\n")
     elif(menu_index == 1):
         logo()
-        title = input("\n\nPlease enter the habit title: ")
+        title = input("\nPlease enter the habit title: ")
         matching_habits = find_by_habit(title, user_id=user_id)
         if matching_habits:
             habit = make_habit_menu(matching_habits=matching_habits)
@@ -93,7 +95,7 @@ def habit_menu(user_id):
         start()
 
 def error_message(record_name, menu):
-    print(f"\n{red(f'{record_name} not found.')}\n\nRedirecting you to the {menu} menu...")
+    print(f"\n{red(f'{record_name} not found.')}\nRedirecting you to the {menu} menu...")
     time.sleep(3)
 
 def make_habit_menu(matching_habits):
@@ -118,8 +120,7 @@ def habit_sub_menu(user_id, habit_id):
     elif(menu_index == 3):
         print("reset")
     else:
-        clear_screen()
-        print("\n\nGood bye!\n\n")
+        habit_menu(user_id)
 
 def main():
     start()
