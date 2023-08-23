@@ -72,23 +72,28 @@ def habit_menu(user_id):
         title = input("\n\nPlease enter the habit title: ")
         matching_habits = find_by_habit(title, user_id=user_id)
         if matching_habits:
-            habit_options = []
-            for habit in matching_habits:
-                habit_options.append(habit.title)
-            terminal_menu = TerminalMenu(habit_options)
-            habit_index = terminal_menu.show()
-            print(matching_habits[habit_index])
+            habit = make_habit_menu(matching_habits=matching_habits)
+            print(habit)
         else:
             error_message("Habit", "habit")
             habit_menu(user_id)
-    elif(menu_index == 3):
-        print("view all")
+    elif(menu_index == 2):
+        selected_habit = make_habit_menu(view_all_habit(user_id=user_id))
+        print(selected_habit)
     else:
         print("Go back")
 
 def error_message(record_name, menu):
     print(f"\n{red(f'{record_name} not found.')}\n\nRedirecting you to the {menu} menu...")
     time.sleep(3)
+
+def make_habit_menu(matching_habits):
+    habit_options = []
+    for habit in matching_habits:
+        habit_options.append(habit.title)
+    terminal_menu = TerminalMenu(habit_options)
+    habit_index = terminal_menu.show()
+    return matching_habits[habit_index]
 
 def main():
     start()

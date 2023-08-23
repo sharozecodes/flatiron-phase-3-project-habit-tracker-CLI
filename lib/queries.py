@@ -26,3 +26,6 @@ def add_habit(title, frequency, user_id):
 def find_by_habit(text, user_id):
     query = session.query(Habit).filter_by(user_id=user_id).filter(Habit.title.ilike(f"%{text}%"))
     return query.all()
+
+def view_all_habit(user_id):
+    return session.query(Habit).filter_by(user_id=user_id).all()
