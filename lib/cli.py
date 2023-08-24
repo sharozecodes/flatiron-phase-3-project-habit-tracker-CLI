@@ -52,34 +52,39 @@ def sign_in():
 def sign_up():
     logo()
     username = input("\nPlease enter a username: ")
-    if check_username(username=username):
+    if (username == ''):
+        print(red("\nUsername input cannot be empty."))
+        time.sleep(3)
+        sign_up()
+
+    elif check_username(username=username):
         name = input("\nPlease enter name: ")
         user = new_user(username, name)
-        print("User added successfully!")
-        clear_screen()
-        print(f"\nHello, {username}!\n")
-        habit_menu(user_id=user.id)
+        print(green("\nUser added successfully!"))
+        print_name(user.id)    
+        habit_menu(user.id)
 
     else:
-        print("\nUsername already in use.\nPlease enter a different username.\n")
+        print(red("\nUsername already in use."))
+        print("\nPlease enter a different username.\n")
         time.sleep(3)
         sign_up()
     
 
 def habit_menu(user_id):
     logo()
-    print(f"User id:", user_id)
+    print(f"user id: {user_id}")
     options = ["Add a habit", "Search a habit", "View all habits", "Go back"]
     terminal_menu = TerminalMenu(options)
     menu_index = terminal_menu.show()
     if(menu_index == 0):
         logo()
-        title = input("\nPlease enter the habit title: ")
+        title = input("Please enter the habit title: ")
         frequency = input("\nPlease enter the reminding frequency (in hours): ")
         add_habit(title=title, frequency=frequency, user_id=user_id)
         clear_screen()
         logo()
-        print("\nHabit added successfully!\n")
+        redirect_to_habit_menu(user_id, "registered")
     elif(menu_index == 1):
         logo()
         title = input("\nPlease enter the habit title: ")
@@ -133,7 +138,7 @@ def habit_sub_menu(user_id, habit_id):
         habit_menu(user_id)
 
 def redirect_to_habit_menu(user_id, update):
-    print(green(f"Habit successfully {update}."))
+    print(green(f"\nHabit successfully {update}."))
     time.sleep(3)
     habit_menu(user_id)
 

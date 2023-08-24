@@ -2,6 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models import User, Habit  
 import time
+from cli import logo
 
 engine = create_engine("sqlite:///db/habittracker.db")
 Session = sessionmaker(bind=engine)
@@ -14,7 +15,7 @@ def new_user(username, name):
     return new_user_instance
 
 def check_username(username):
-    return session.query(User).filter_by(username=username).first() == None    
+    return session.query(User).filter_by(username=username).first() == None 
 
 def find_by_username(username):
     return session.query(User).filter_by(username=username).first()
@@ -60,3 +61,10 @@ def check_in(habit_id):
         print("\nThanks for checking in!")
         query.streak += 1
         session.commit()
+
+def print_name(user_id):
+    query = session.query(User).filter_by(id=user_id).first()
+    time.sleep(3)
+    logo()
+    print(f"\nHello, {query.name}!\n")
+    time.sleep(3)
