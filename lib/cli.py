@@ -114,7 +114,8 @@ def habit_sub_menu(user_id, habit_id):
     if(menu_index == 0):
         print(user_id)
     elif(menu_index == 1):
-        edit_habit(habit_id=habit_id, title="testing", frequency=100)
+        habit_title = input(f"Please enter new title: ")   
+        edit_habit(habit_id=habit_id, title=habit_title, frequency=1)
     elif(menu_index == 2):
         delete_habit(habit_id=habit_id)
     elif(menu_index == 3):
