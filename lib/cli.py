@@ -1,6 +1,6 @@
 import os
 import time
-from prettycli import red
+from prettycli import red, green
 from simple_term_menu import TerminalMenu
 from queries import *
 import time
@@ -116,14 +116,26 @@ def habit_sub_menu(user_id, habit_id):
     if(menu_index == 0):
         check_in(habit_id=habit_id)
     elif(menu_index == 1):
-        habit_title = input(f"Please enter new title: ")   
-        edit_habit(habit_id=habit_id, title=habit_title, frequency=1)
+        habit_title = input("Please enter new title: ")   
+        habit_frequency = input("\nPlease enter new frequency (in hours): ")
+        edit_habit(habit_id=habit_id, title=habit_title, frequency=habit_frequency)
+        redirect_to_habit_menu(user_id, "updated")
+
     elif(menu_index == 2):
         delete_habit(habit_id=habit_id)
+        redirect_to_habit_menu(user_id, "deleted")
+
     elif(menu_index == 3):
         reset_habit(habit_id=habit_id)
+        redirect_to_habit_menu(user_id, "reset to zero")
+
     else:
         habit_menu(user_id)
+
+def redirect_to_habit_menu(user_id, update):
+    print(green(f"Habit successfully {update}."))
+    time.sleep(3)
+    habit_menu(user_id)
 
 def main():
     start()
