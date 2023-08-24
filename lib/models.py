@@ -25,6 +25,7 @@ class Habit(Base):
     frequency = Column(Integer)
     streak = Column(Integer)
     user_id = Column(Integer(), ForeignKey('users.id'))
+    last_checked_in = Column(Integer)
 
     def __repr__(self):
         return f'Habit(id={self.id}, ' + \
