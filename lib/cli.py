@@ -114,12 +114,7 @@ def habit_sub_menu(user_id, habit_id):
     terminal_menu = TerminalMenu(options)
     menu_index = terminal_menu.show()
     if(menu_index == 0):
-        time_now = int(time.time())
-        print(user_id)
-        #1692909994
-        #1692910030
-        #day-sec-86400
-        print(f"The time is now: {time_now}")
+        check_in(habit_id=habit_id)
     elif(menu_index == 1):
         habit_title = input(f"Please enter new title: ")   
         edit_habit(habit_id=habit_id, title=habit_title, frequency=1)

@@ -33,7 +33,7 @@ if __name__ == '__main__':
         users.append(user)
 
     habits = [
-    Habit(title='Read a book', frequency=3, streak=2, user_id=users[0].id, last_checked_in=int(time.time())),
+    Habit(title='Read a book', frequency=0, streak=2, user_id=users[0].id, last_checked_in=int(time.time())),
     Habit(title='Workout', frequency=2, streak=4, user_id=users[1].id, last_checked_in=int(time.time())),
     Habit(title='Drink water', frequency=1, streak=3, user_id=users[1].id, last_checked_in=int(time.time())),
     Habit(title='Meditate', frequency=3, streak=1, user_id=users[2].id, last_checked_in=int(time.time())),

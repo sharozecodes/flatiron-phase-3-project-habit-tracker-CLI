@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models import User, Habit  
+import time
 
 engine = create_engine("sqlite:///db/habittracker.db")
 Session = sessionmaker(bind=engine)
@@ -46,3 +47,16 @@ def reset_habit(habit_id):
     query = session.query(Habit).filter_by(id=habit_id).first()
     query.streak = 0
     session.commit()
+
+def check_in(habit_id):
+    time_now = int(time.time())
+    query = session.query(Habit).filter_by(id=habit_id).first()
+    hours_passed = (time_now - query.last_checked_in) / 3600
+    if(hours_passed > query.frequency):
+        print("\noops the streak broke. :(\nLet's try again.")
+        query.streak = 0
+        session.commit()
+    else:
+        print("\nThanks for checking in!")
+        query.streak += 1
+        session.commit()
