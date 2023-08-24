@@ -89,15 +89,26 @@ def habit_menu(user_id):
         logo()
         title = input("\nPlease enter the habit title: ")
         matching_habits = find_by_habit(title, user_id=user_id)
-        if matching_habits:
-            habit = make_habit_menu(matching_habits=matching_habits)
+        if (matching_habits == []):
+            error_message("Habits", "habit")
+            habit_menu(user_id)
+        elif matching_habits:
+            habit = make_habit_menu(matching_habits)
             habit_sub_menu(user_id, habit.id)
         else:
             error_message("Habit", "habit")
             habit_menu(user_id)
+
     elif(menu_index == 2):
-        selected_habit = make_habit_menu(view_all_habit(user_id=user_id))
-        habit_sub_menu(user_id, selected_habit.id)
+        habit_matches = view_all_habit(user_id=user_id)
+        if (habit_matches == []):
+            error_message("Habits", "habit")
+            habit_menu(user_id)
+        elif habit_matches:
+            selected_habit = make_habit_menu(habit_matches)
+            habit_sub_menu(user_id, selected_habit.id)
+        else:
+            habit_menu(user_id)
     else:
         start()
 
