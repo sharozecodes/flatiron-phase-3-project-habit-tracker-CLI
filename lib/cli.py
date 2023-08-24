@@ -30,7 +30,7 @@ def handle_user_input(user_input):
     elif(user_input == 1):
         sign_up()
     elif(user_input == 2):
-        clear_screen()
+        logo()
         print("\nGood bye!\n")
     
 
@@ -75,7 +75,7 @@ def habit_menu(user_id):
     if(menu_index == 0):
         logo()
         title = input("\nPlease enter the habit title: ")
-        frequency = input("\nPlease enter the reminding frequency: ")
+        frequency = input("\nPlease enter the reminding frequency (in hours): ")
         add_habit(title=title, frequency=frequency, user_id=user_id)
         clear_screen()
         logo()
