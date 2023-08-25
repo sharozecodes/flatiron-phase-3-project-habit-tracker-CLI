@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from prettycli import red, green
 from models import User, Habit  
 import time
 from cli import logo
@@ -21,7 +22,7 @@ def find_by_username(username):
     return session.query(User).filter_by(username=username).first()
 
 def add_habit(title, frequency, user_id):
-    new_habit = Habit(title=title, frequency=frequency, streak=0, user_id=user_id, last_checked_in=int(time.time()))
+    new_habit = Habit(title=title, frequency=frequency, streak=0, user_id=user_id, last_checked_in=0)
     session.add(new_habit)
     session.commit()
     print("Habit added successfully!")
@@ -52,10 +53,21 @@ def reset_habit(habit_id):
 def check_in(habit_id):
     time_now = int(time.time())
     query = session.query(Habit).filter_by(id=habit_id).first()
+    #for first check_in only
+    if (query.last_checked_in == 0):
+        query.streak += 1
+        query.last_checked_in = time_now
+        session.commit()
+        return True
+
+    #for later check_ins 
     hours_passed = (time_now - query.last_checked_in) / 3600
     if(hours_passed > query.frequency):
         query.streak += 1
         session.commit()
+        return True
+    else:
+        return False
 
 def view_streak(habit_id):
     time_now = int(time.time())

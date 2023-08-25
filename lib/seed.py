@@ -1,5 +1,5 @@
 # from faker import Faker
-import time
+#import time
 from models import User, Habit
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -33,16 +33,16 @@ if __name__ == '__main__':
         users.append(user)
 
     habits = [
-    Habit(title='Read a book', frequency=12, streak=2, user_id=users[0].id, last_checked_in=int(time.time())),
-    Habit(title='Workout', frequency=24, streak=4, user_id=users[1].id, last_checked_in=int(time.time())),
-    Habit(title='Drink water', frequency=3, streak=3, user_id=users[1].id, last_checked_in=int(time.time())),
-    Habit(title='Meditate', frequency=3, streak=1, user_id=users[2].id, last_checked_in=int(time.time())),
-    Habit(title='Write journal', frequency=12, streak=2, user_id=users[3].id, last_checked_in=int(time.time())),
-    Habit(title='Stretch', frequency=2, streak=4, user_id=users[5].id, last_checked_in=int(time.time())),
-    Habit(title='Practice coding', frequency=12, streak=3, user_id=users[5].id, last_checked_in=int(time.time())),
-    Habit(title='Eat veggies', frequency=6, streak=1, user_id=users[8].id, last_checked_in=int(time.time())),
-    Habit(title='Listen to music', frequency=24, streak=3, user_id=users[9].id, last_checked_in=int(time.time())),
-    Habit(title='Call a friend', frequency=24, streak=2, user_id=users[4].id, last_checked_in=int(time.time()))
+    Habit(title='Read a book', frequency=12, streak=0, user_id=users[0].id, last_checked_in = 0),
+    Habit(title='Workout', frequency=24, streak=0, user_id=users[1].id, last_checked_in = 0),
+    Habit(title='Drink water', frequency=3, streak=0, user_id=users[1].id, last_checked_in = 0),
+    Habit(title='Meditate', frequency=3, streak=0, user_id=users[2].id, last_checked_in = 0),
+    Habit(title='Write journal', frequency=12, streak=0, user_id=users[3].id, last_checked_in = 0),
+    Habit(title='Stretch', frequency=2, streak=0, user_id=users[5].id, last_checked_in = 0),
+    Habit(title='Practice coding', frequency=12, streak=0, user_id=users[5].id, last_checked_in = 0),
+    Habit(title='Eat veggies', frequency=6, streak=0, user_id=users[8].id, last_checked_in = 0),
+    Habit(title='Listen to music', frequency=24, streak=0, user_id=users[9].id, last_checked_in = 0),
+    Habit(title='Call a friend', frequency=24, streak=0, user_id=users[4].id, last_checked_in = 0)
 ]
 
     session.bulk_save_objects(habits)

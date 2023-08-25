@@ -144,8 +144,12 @@ def habit_sub_menu(user_id, habit_id):
     terminal_menu = TerminalMenu(options)
     menu_index = terminal_menu.show()
     if(menu_index == 0):
-        check_in(habit_id=habit_id)
-        redirect_to_habit_menu(user_id, "checked in")
+        checked_in = check_in(habit_id)
+        if checked_in:
+            redirect_to_habit_menu(user_id, "checked in")
+        else:
+            print("\nYou are already checked in for this interval")
+            redirect_to_habit_menu(user_id, "new_check_in")
 
     elif(menu_index == 1):
         habit_title = input("Please enter new title: ")   
@@ -165,7 +169,8 @@ def habit_sub_menu(user_id, habit_id):
         habit_menu(user_id)
 
 def redirect_to_habit_menu(user_id, update):
-    print(green(f"\nHabit successfully {update}"))
+    if (update != "new_check_in"):
+        print(green(f"\nHabit successfully {update}"))
     time.sleep(3)
     habit_menu(user_id)
 
