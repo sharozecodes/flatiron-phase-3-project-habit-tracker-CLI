@@ -58,7 +58,6 @@ def check_in(habit_id):
         query.streak = 0
         session.commit()
     else:
-        print("\nThanks for checking in!")
         query.streak += 1
         session.commit()
 

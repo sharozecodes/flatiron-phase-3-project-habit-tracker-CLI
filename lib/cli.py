@@ -14,8 +14,8 @@ def logo():
         | |_| | / _ \ |  _ \| |  | |     | | | |_) |  / _ \| |   | ' /|  _| | |_) |
         |  _  |/ ___ \| |_) | |  | |     | | |  _ <  / ___ \ |___| . \| |___|  _ <
         |_| |_/_/   \_\____/___| |_|     |_| |_| \_\/_/   \_\____|_|\_\_____|_| \_\\
-        """)
-
+        """
+)
 def start():
     logo()
     options = ["Sign In", "Sign Up", "Exit"]
@@ -53,7 +53,7 @@ def sign_up():
     logo()
     username = input("\nPlease enter a username: ")
     if (username == ''):
-        print(red("\nUsername input cannot be empty."))
+        print(red("\nUsername input cannot be empty"))
         time.sleep(3)
         sign_up()
 
@@ -65,8 +65,8 @@ def sign_up():
         habit_menu(user.id)
 
     else:
-        print(red("\nUsername already in use."))
-        print("\nPlease enter a different username.\n")
+        print(red("\nUsername already in use"))
+        print("\nPlease enter a different username\n")
         time.sleep(3)
         sign_up()
     
@@ -131,6 +131,8 @@ def habit_sub_menu(user_id, habit_id):
     menu_index = terminal_menu.show()
     if(menu_index == 0):
         check_in(habit_id=habit_id)
+        redirect_to_habit_menu(user_id, "checked in")
+
     elif(menu_index == 1):
         habit_title = input("Please enter new title: ")   
         habit_frequency = input("\nPlease enter new frequency (in hours): ")
@@ -149,7 +151,7 @@ def habit_sub_menu(user_id, habit_id):
         habit_menu(user_id)
 
 def redirect_to_habit_menu(user_id, update):
-    print(green(f"\nHabit successfully {update}."))
+    print(green(f"\nHabit successfully {update}"))
     time.sleep(3)
     habit_menu(user_id)
 
