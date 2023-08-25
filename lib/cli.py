@@ -57,6 +57,11 @@ def sign_up():
         time.sleep(3)
         sign_up()
 
+    elif (len(username) > 10):
+        print(red("\nUsername cannot be greater than 10 characters"))
+        time.sleep(3)
+        sign_up()
+
     elif check_username(username=username):
         name = input("\nPlease enter name: ")
         user = new_user(username, name)
