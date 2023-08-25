@@ -85,7 +85,13 @@ def habit_menu(user_id):
     if(menu_index == 0):
         logo()
         title = input("Please enter the habit title: ")
-        frequency = input("\nPlease enter the reminding frequency (in hours): ")
+        frequency = ""
+        while type(frequency) == str:
+            try:
+                frequency = int(input("\nPlease enter the reminding frequency (in hours): "))
+            except ValueError:
+                print(red("\nPlease enter an integer"))
+
         add_habit(title=title, frequency=frequency, user_id=user_id)
         clear_screen()
         logo()
@@ -132,6 +138,8 @@ def make_habit_menu(matching_habits):
 
 def habit_sub_menu(user_id, habit_id):
     logo()
+    current_streak = view_streak(habit_id)
+    print(f"Hey! You're current streak is: {current_streak}")
     options = ["Check In", "Edit habit", "Delete habit", "Reset streak", "Back"]
     terminal_menu = TerminalMenu(options)
     menu_index = terminal_menu.show()

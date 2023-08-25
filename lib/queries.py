@@ -21,7 +21,7 @@ def find_by_username(username):
     return session.query(User).filter_by(username=username).first()
 
 def add_habit(title, frequency, user_id):
-    new_habit = Habit(title=title, frequency=frequency, streak=0, user_id=user_id)
+    new_habit = Habit(title=title, frequency=frequency, streak=0, user_id=user_id, last_checked_in=int(time.time()))
     session.add(new_habit)
     session.commit()
     print("Habit added successfully!")
@@ -54,12 +54,20 @@ def check_in(habit_id):
     query = session.query(Habit).filter_by(id=habit_id).first()
     hours_passed = (time_now - query.last_checked_in) / 3600
     if(hours_passed > query.frequency):
-        print("\noops the streak broke :(\nLet's try again")
-        query.streak = 0
-        session.commit()
-    else:
         query.streak += 1
         session.commit()
+
+def view_streak(habit_id):
+    time_now = int(time.time())
+    query = session.query(Habit).filter_by(id=habit_id).first()
+    hours_passed = (time_now - query.last_checked_in) / 3600
+    if(hours_passed > 2 * query.frequency):
+        query.streak = 0
+        session.commit()
+        return 0
+    else:
+        return query.streak
+
 
 def print_name(user_id):
     query = session.query(User).filter_by(id=user_id).first()
