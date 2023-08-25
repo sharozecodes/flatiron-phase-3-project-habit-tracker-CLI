@@ -1,5 +1,3 @@
-# from faker import Faker
-#import time
 from models import User, Habit
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
