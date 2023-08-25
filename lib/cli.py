@@ -1,6 +1,6 @@
 import os
 import time
-from prettycli import red, green
+from prettycli import red, green, blue
 from simple_term_menu import TerminalMenu
 from queries import *
 import time
@@ -14,7 +14,7 @@ def logo():
         | |_| | / _ \ |  _ \| |  | |     | | | |_) |  / _ \| |   | ' /|  _| | |_) |
         |  _  |/ ___ \| |_) | |  | |     | | |  _ <  / ___ \ |___| . \| |___|  _ <
         |_| |_/_/   \_\____/___| |_|     |_| |_| \_\/_/   \_\____|_|\_\_____|_| \_\\
-        """
+        \n"""
 )
 def start():
     logo()
@@ -139,7 +139,7 @@ def make_habit_menu(matching_habits):
 def habit_sub_menu(user_id, habit_id):
     logo()
     current_streak = view_streak(habit_id)
-    print(f"Hey! You're current streak is: {current_streak}")
+    print(blue(f"Hey! You're current streak is: {current_streak}\n"))
     options = ["Check In", "Edit habit", "Delete habit", "Reset streak", "Back"]
     terminal_menu = TerminalMenu(options)
     menu_index = terminal_menu.show()

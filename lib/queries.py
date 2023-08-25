@@ -38,6 +38,7 @@ def edit_habit(habit_id, title, frequency):
     query = session.query(Habit).filter_by(id=habit_id).first()
     query.title = title
     query.frequency = frequency
+    query.last_checked_in = 0
     session.commit()
 
 def delete_habit(habit_id):
@@ -48,6 +49,7 @@ def delete_habit(habit_id):
 def reset_habit(habit_id):
     query = session.query(Habit).filter_by(id=habit_id).first()
     query.streak = 0
+    query.last_checked_in = 0
     session.commit()
 
 def check_in(habit_id):
@@ -62,6 +64,8 @@ def check_in(habit_id):
 
     #for later check_ins 
     hours_passed = (time_now - query.last_checked_in) / 3600
+    #test_value (Uncomment line below to test streak function)
+    #hours_passed = query.frequency + 1
     if(hours_passed > query.frequency):
         query.streak += 1
         session.commit()
