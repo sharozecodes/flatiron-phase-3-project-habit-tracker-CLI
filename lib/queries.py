@@ -54,7 +54,7 @@ def check_in(habit_id):
     query = session.query(Habit).filter_by(id=habit_id).first()
     hours_passed = (time_now - query.last_checked_in) / 3600
     if(hours_passed > query.frequency):
-        print("\noops the streak broke. :(\nLet's try again.")
+        print("\noops the streak broke :(\nLet's try again")
         query.streak = 0
         session.commit()
     else:

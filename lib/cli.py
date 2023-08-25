@@ -113,7 +113,8 @@ def habit_menu(user_id):
         start()
 
 def error_message(record_name, menu):
-    print(f"\n{red(f'{record_name} not found.')}\nRedirecting you to the {menu} menu...")
+    print(red(f'\n{record_name} not found!'))
+    print(f"\nRedirecting you to the {menu} menu...")
     time.sleep(3)
 
 def make_habit_menu(matching_habits):
