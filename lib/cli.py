@@ -31,7 +31,7 @@ def handle_user_input(user_input):
         sign_up()
     elif(user_input == 2):
         logo()
-        print("\nGood bye!\n")
+        print("\nSee you later!\n")
     
 
 def clear_screen():
