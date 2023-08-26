@@ -31,16 +31,16 @@ if __name__ == '__main__':
         users.append(user)
 
     habits = [
-    Habit(title='Read a book', frequency=12, streak=0, user_id=users[0].id, last_checked_in = 0),
-    Habit(title='Workout', frequency=24, streak=0, user_id=users[1].id, last_checked_in = 0),
+    Habit(title='Read a book', frequency=2, streak=0, user_id=users[0].id, last_checked_in = 0),
+    Habit(title='Workout', frequency=2, streak=0, user_id=users[1].id, last_checked_in = 0),
     Habit(title='Drink water', frequency=3, streak=0, user_id=users[1].id, last_checked_in = 0),
-    Habit(title='Meditate', frequency=3, streak=0, user_id=users[2].id, last_checked_in = 0),
-    Habit(title='Write journal', frequency=12, streak=0, user_id=users[3].id, last_checked_in = 0),
-    Habit(title='Stretch', frequency=2, streak=0, user_id=users[5].id, last_checked_in = 0),
-    Habit(title='Practice coding', frequency=12, streak=0, user_id=users[5].id, last_checked_in = 0),
-    Habit(title='Eat veggies', frequency=6, streak=0, user_id=users[8].id, last_checked_in = 0),
-    Habit(title='Listen to music', frequency=24, streak=0, user_id=users[9].id, last_checked_in = 0),
-    Habit(title='Call a friend', frequency=24, streak=0, user_id=users[4].id, last_checked_in = 0)
+    Habit(title='Meditate', frequency=5, streak=0, user_id=users[2].id, last_checked_in = 0),
+    Habit(title='Write journal', frequency=5, streak=0, user_id=users[3].id, last_checked_in = 0),
+    Habit(title='Stretch', frequency=6, streak=0, user_id=users[5].id, last_checked_in = 0),
+    Habit(title='Practice coding', frequency=7, streak=0, user_id=users[5].id, last_checked_in = 0),
+    Habit(title='Eat veggies', frequency=8, streak=0, user_id=users[8].id, last_checked_in = 0),
+    Habit(title='Listen to music', frequency=9, streak=0, user_id=users[9].id, last_checked_in = 0),
+    Habit(title='Call a friend', frequency=11, streak=0, user_id=users[4].id, last_checked_in = 0)
 ]
 
     session.bulk_save_objects(habits)
