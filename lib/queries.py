@@ -79,8 +79,9 @@ def view_streak(habit_id):
     hours_passed = (time_now - query.last_checked_in) / 3600
     if(hours_passed > 2 * query.frequency):
         query.streak = 0
+        query.last_checked_in = 0
         session.commit()
-        return 0
+        return query.streak
     else:
         return query.streak
 
