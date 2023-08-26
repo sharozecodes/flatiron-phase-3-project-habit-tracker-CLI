@@ -158,8 +158,18 @@ def habit_sub_menu(user_id, habit_id):
         redirect_to_habit_menu(user_id, "updated")
 
     elif(menu_index == 2):
-        delete_habit(habit_id=habit_id)
-        redirect_to_habit_menu(user_id, "deleted")
+        logo()
+        print(red("Are you sure you want to delete this habit?"))
+        options = ["Yes", "No"]
+        terminal_menu = TerminalMenu(options)
+        menu_index = terminal_menu.show()
+        if (menu_index == 0):
+            delete_habit(habit_id=habit_id)
+            redirect_to_habit_menu(user_id, "deleted")
+        else:
+            logo()
+            print("cancelling deletion...")
+            redirect_to_habit_menu(user_id, "no")
 
     elif(menu_index == 3):
         reset_habit(habit_id=habit_id)
@@ -169,7 +179,7 @@ def habit_sub_menu(user_id, habit_id):
         habit_menu(user_id)
 
 def redirect_to_habit_menu(user_id, update):
-    if (update != "new_check_in"):
+    if (update != "new_check_in" and update != "no"):
         print(green(f"\nHabit successfully {update}"))
     time.sleep(3)
     habit_menu(user_id)
