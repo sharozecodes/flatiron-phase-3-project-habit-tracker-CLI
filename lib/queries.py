@@ -63,11 +63,6 @@ def check_in(habit_id):
 
     #for later check_ins 
     hours_passed = (time_now - query.last_checked_in) // 3600
-    # print(hours_passed)
-    # time.sleep(3)
-
-    #test_value (Uncomment line below to test streak function)
-    #hours_passed = query.frequency + 1
     if(hours_passed >= query.frequency):
         query.streak += 1
         query.last_checked_in = time_now
