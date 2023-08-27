@@ -2,4 +2,4 @@
 
 # Phase 3 Project Demo Video URL
 
-_coming soon_
+https://youtu.be/LqokgocAw7A
