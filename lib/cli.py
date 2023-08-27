@@ -84,13 +84,13 @@ def habit_menu(user_id):
     menu_index = terminal_menu.show()
     if(menu_index == 0):
         title = habit_checker()
-        frequency = ""
-        while type(frequency) == str:
-            try:
-                frequency = int(input("\nPlease enter the reminding frequency (in hours): "))
-            except ValueError:
-                print(red("\nPlease enter an integer"))
-
+        # frequency = ""
+        # while type(frequency) == str:
+        #     try:
+        #         frequency = int(input("\nPlease enter the reminding frequency (in hours): "))
+        #     except ValueError:
+        #         print(red("\nPlease enter an integer"))
+        frequency = frequency_checker()
         add_habit(title=title, frequency=frequency, user_id=user_id)
         clear_screen()
         logo()
@@ -151,8 +151,8 @@ def habit_sub_menu(user_id, habit_id):
             redirect_to_habit_menu(user_id, "new_check_in")
 
     elif(menu_index == 1):
-        habit_title = input("Please enter new title: ")   
-        habit_frequency = input("\nPlease enter new frequency (in hours): ")
+        habit_title = habit_checker()   
+        habit_frequency = frequency_checker()
         edit_habit(habit_id=habit_id, title=habit_title, frequency=habit_frequency)
         redirect_to_habit_menu(user_id, "updated")
 
@@ -193,6 +193,25 @@ def habit_checker():
             continue
         else:
             return title
+
+# def frequency_checker():
+#     frequency = ""
+#     while type(frequency) == str:
+#         try:
+#             frequency = int(input("\nPlease enter the reminding frequency (in hours): "))
+#             return frequency
+#         except ValueError:
+#             print(red("\nPlease enter an integer"))
+
+def frequency_checker():
+    while True:
+        try:
+            frequency = int(input("\nPlease enter the reminding frequency (in hours): "))
+            return frequency
+        except ValueError:
+            print(red("\nPlease enter an integer"))
+
+
 
 def main():
     start()
