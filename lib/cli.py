@@ -52,13 +52,13 @@ def sign_in():
 def sign_up():
     logo()
     username = input("\nPlease enter a username: ")
-    if (username == ''):
+    if (username.strip() == ''):
         print(red("\nUsername input cannot be empty"))
         time.sleep(3)
         sign_up()
 
-    elif (len(username) > 10):
-        print(red("\nUsername cannot be greater than 10 characters"))
+    elif (len(username) > 9):
+        print(red("\nUsername cannot be greater than 9 characters"))
         time.sleep(3)
         sign_up()
 
@@ -83,8 +83,7 @@ def habit_menu(user_id):
     terminal_menu = TerminalMenu(options)
     menu_index = terminal_menu.show()
     if(menu_index == 0):
-        logo()
-        title = input("Please enter the habit title: ")
+        title = habit_checker()
         frequency = ""
         while type(frequency) == str:
             try:
@@ -183,6 +182,17 @@ def redirect_to_habit_menu(user_id, update):
         print(green(f"\nHabit successfully {update}"))
     time.sleep(3)
     habit_menu(user_id)
+
+def habit_checker():
+    while True:
+        logo()
+        title = input("Please enter the habit title: ")
+        if (title.strip() == ''):
+            print(red("\nHabit input cannot be empty"))
+            time.sleep(3)
+            continue
+        else:
+            return title
 
 def main():
     start()

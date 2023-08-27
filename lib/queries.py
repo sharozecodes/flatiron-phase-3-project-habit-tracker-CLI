@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from prettycli import red, green
+from prettycli import yellow
 from models import User, Habit  
 import time
 from cli import logo
@@ -63,7 +63,9 @@ def check_in(habit_id):
 
     #for later check_ins 
     hours_passed = (time_now - query.last_checked_in) // 3600
-    
+    print(hours_passed)
+    time.sleep(3)
+
     #test_value (Uncomment line below to test streak function)
     #hours_passed = query.frequency + 1
     if(hours_passed >= query.frequency):
@@ -91,5 +93,5 @@ def print_name(user_id):
     query = session.query(User).filter_by(id=user_id).first()
     time.sleep(3)
     logo()
-    print(f"\nHello, {query.name}!\n")
+    print(yellow(f"\nHello, {query.name}!\n"))
     time.sleep(3)
