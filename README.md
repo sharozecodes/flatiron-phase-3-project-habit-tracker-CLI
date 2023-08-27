@@ -46,8 +46,12 @@ Habit Tracker is a command-line application designed for Flatiron School's third
 
 ## Usage
 
-1. Start the application and follow the on-screen prompts to interact with your habits.
-2. Habits are time-based. To check-in a habit, you would normally need to wait for the real-time interval to elapse.
+1. Start the application by running:
+   ```bash
+   python cli.py
+   ```
+2. Follow the on-screen prompts to interact with your habits.
+3. Habits are time-based. To check-in a habit, you would normally need to wait for the real-time interval to elapse.
 
 ### Testing
 
