@@ -91,7 +91,8 @@ def start():
             break
         else:
             logo()
-            print("\nSee you later.\nHappy Coding!\n")
+            print(green("\nYou can now test the check-in in the Habit Tracker app"))
+            print("\nHappy Coding!\n")
             break
     
     return 1
