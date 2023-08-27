@@ -6,16 +6,16 @@
 
 ### The minimum requirements
 
-- [ ] A CLI application
-- [ ] that solves a real-world problem
-- [ ] adheres to best practices
-- [ ] A database created with SQLAlchemy
-  - [ ] and modified with SQLAlchemy ORM
-  - [ ] 2+ related tables
-- [ ] A well-maintained virtual environment using Pipenv
-- [ ] Proper package structure in your application
-- [ ] Use of lists
-- [ ] Use of dictionaries
+- [x] A CLI application
+- [x] that solves a real-world problem
+- [x] adheres to best practices
+- [x] A database created with SQLAlchemy
+  - [x] and modified with SQLAlchemy ORM
+  - [x] 2+ related tables
+- [x] A well-maintained virtual environment using Pipenv
+- [x] Proper package structure in your application
+- [x] Use of lists
+- [x] Use of dictionaries
 
 ### Stretch goals
 
