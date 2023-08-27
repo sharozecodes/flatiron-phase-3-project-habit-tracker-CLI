@@ -66,7 +66,7 @@ def check_in(habit_id):
     
     #test_value (Uncomment line below to test streak function)
     #hours_passed = query.frequency + 1
-    if(hours_passed > query.frequency):
+    if(hours_passed >= query.frequency):
         query.streak += 1
         query.last_checked_in = time_now
         session.commit()
