@@ -23,7 +23,6 @@ def start():
     menu_index = terminal_menu.show()
     handle_user_input(menu_index)
 
-
 def handle_user_input(user_input):
     if(user_input == 0):
         sign_in()
@@ -31,8 +30,7 @@ def handle_user_input(user_input):
         sign_up()
     elif(user_input == 2):
         logo()
-        print("\nSee you later!\n")
-    
+        print("\nSee you later!\n")    
 
 def clear_screen():
     os.system("clear")
@@ -46,8 +44,6 @@ def sign_in():
     else:
         error_message("Username", "main")
         start()
-
-    
 
 def sign_up():
     logo()
@@ -84,12 +80,6 @@ def habit_menu(user_id):
     menu_index = terminal_menu.show()
     if(menu_index == 0):
         title = habit_checker()
-        # frequency = ""
-        # while type(frequency) == str:
-        #     try:
-        #         frequency = int(input("\nPlease enter the reminding frequency (in hours): "))
-        #     except ValueError:
-        #         print(red("\nPlease enter an integer"))
         frequency = frequency_checker()
         add_habit(title=title, frequency=frequency, user_id=user_id)
         clear_screen()
@@ -194,15 +184,6 @@ def habit_checker():
         else:
             return title
 
-# def frequency_checker():
-#     frequency = ""
-#     while type(frequency) == str:
-#         try:
-#             frequency = int(input("\nPlease enter the reminding frequency (in hours): "))
-#             return frequency
-#         except ValueError:
-#             print(red("\nPlease enter an integer"))
-
 def frequency_checker():
     while True:
         try:
@@ -210,8 +191,6 @@ def frequency_checker():
             return frequency
         except ValueError:
             print(red("\nPlease enter an integer"))
-
-
 
 def main():
     start()
