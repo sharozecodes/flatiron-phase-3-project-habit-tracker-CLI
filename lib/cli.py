@@ -117,9 +117,8 @@ def error_message(record_name, menu):
     time.sleep(3)
 
 def make_habit_menu(matching_habits):
-    habit_options = []
-    for habit in matching_habits:
-        habit_options.append(habit.title)
+
+    habit_options = [habit.title for habit in matching_habits]
     terminal_menu = TerminalMenu(habit_options)
     habit_index = terminal_menu.show()
     return matching_habits[habit_index]
